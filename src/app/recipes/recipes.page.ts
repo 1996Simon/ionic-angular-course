@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewWillEnter } from '@ionic/angular';
 
 import { Recipe } from './recipe.model';
 import { RecipesService } from './recipes.service';
@@ -8,12 +9,12 @@ import { RecipesService } from './recipes.service';
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
 })
-export class RecipesPage implements OnInit {
+export class RecipesPage implements ViewWillEnter {
   recipes: Recipe[];
 
-  constructor(private recipesService: RecipesService) { }
+  constructor(private recipesService: RecipesService) {}
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.recipes = this.recipesService.getAllRecipes();
   }
 
